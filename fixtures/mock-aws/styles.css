@@ -1,0 +1,143 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --ink: #16191f;
+  --muted: #5f6b7a;
+  --accent: #42c6b7;
+  --border: #d5dbdb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16191f;
+    --panel: #1f2329;
+    --ink: #e9ebed;
+    --muted: #a4acb8;
+    --border: #33383f;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.mock-banner {
+  background: var(--accent);
+  color: #06221e;
+  font-weight: 600;
+  padding: 6px 16px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.service {
+  font-weight: 700;
+}
+
+.region,
+.lead,
+.hint,
+nav {
+  color: var(--muted);
+}
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+h1 {
+  margin: 8px 0;
+}
+
+button {
+  font: inherit;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--ink);
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #06221e;
+  font-weight: 600;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: color-mix(in srgb, var(--panel) 85%, var(--muted));
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.field {
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 420px;
+}
+
+input,
+select {
+  font: inherit;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.banner.success {
+  background: color-mix(in srgb, #2ecc71 18%, var(--panel));
+  border: 1px solid color-mix(in srgb, #2ecc71 45%, var(--border));
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 12px 0;
+}

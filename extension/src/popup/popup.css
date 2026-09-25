@@ -1,0 +1,155 @@
+:root {
+  color-scheme: light dark;
+  --remora-accent: #42c6b7;
+  --remora-accent-dark: #08312d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #16211f;
+  background: #f6fbfa;
+}
+
+.popup {
+  width: 320px;
+  padding: 16px;
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.status {
+  margin: 0 0 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.row dt {
+  color: #5a6b68;
+  font-weight: 600;
+}
+
+.row dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: capitalize;
+  background: #e2e8e7;
+  color: #37504c;
+}
+
+.badge[data-state="connected"] {
+  background: var(--remora-accent);
+  color: var(--remora-accent-dark);
+}
+
+.badge[data-state="connecting"] {
+  background: #ffe6a8;
+  color: #6b4b00;
+}
+
+.badge[data-state="error"] {
+  background: #ffd9d9;
+  color: #8a1f1f;
+}
+
+.badge[data-state="unsupported"] {
+  background: #ffe0c2;
+  color: #7a3d00;
+}
+
+.reconnect {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--remora-accent-dark);
+  color: #eafffb;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.grant {
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 6px;
+  border: 1px solid #0d4a44;
+  background: transparent;
+  color: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.grant:hover {
+  background: color-mix(in srgb, var(--remora-accent) 25%, transparent);
+}
+
+.grant:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.reconnect:hover {
+  background: #0d4a44;
+}
+
+.reconnect:active {
+  transform: translateY(1px);
+}
+
+.error {
+  margin: 10px 0 0;
+  color: #8a1f1f;
+  font-size: 12px;
+}
+
+.note {
+  margin: 10px 0 0;
+  color: #6b7b78;
+  font-size: 11px;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #e8f1ef;
+    background: #10201d;
+  }
+  .row dt {
+    color: #9db3af;
+  }
+  .badge {
+    background: #23332f;
+    color: #cfe0dc;
+  }
+  .note {
+    color: #8aa19c;
+  }
+}

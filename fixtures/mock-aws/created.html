@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tables | DynamoDB (Mock)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="mock-banner">Mock AWS fixture — local only, no cloud calls</div>
+    <header class="topbar">
+      <span class="service">DynamoDB</span>
+      <span class="region">us-east-1</span>
+    </header>
+    <main>
+      <h1>Tables</h1>
+      <div class="banner success" role="status">Table created successfully</div>
+      <button id="create-again" class="primary">Create table</button>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Partition key</th>
+          </tr>
+        </thead>
+        <tbody id="tables-body">
+          <tr>
+            <td><a id="table-name" href="#">remora-demo</a></td>
+            <td id="table-status">Active</td>
+            <td id="table-key">id (String)</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name") || "remora-demo";
+      document.getElementById("table-name").textContent = name;
+      document.getElementById("create-again").addEventListener("click", () => {
+        window.location.href = "create-table.html";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "@remora/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "demo:mocked": "tsx src/index.ts demo",
+    "run": "tsx src/index.ts run",
+    "observe": "tsx src/index.ts observe",
+    "serve": "tsx src/index.ts serve",
+    "check:gateway": "tsx scripts/check-gateway-fixtures.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remora/protocol": "*",
+    "ws": "^8.18.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/ws": "^8.5.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}

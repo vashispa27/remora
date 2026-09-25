@@ -1,0 +1,21 @@
+{
+  "name": "remora",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "shared/protocol",
+    "agent",
+    "extension"
+  ],
+  "scripts": {
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "build:extension": "npm run build -w @remora/extension",
+    "demo:mocked": "npm run demo:mocked -w @remora/agent",
+    "check:gateway": "npm run check:gateway -w @remora/agent",
+    "serve:fixtures": "node fixtures/mock-aws/serve.mjs"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true
+  }
+}

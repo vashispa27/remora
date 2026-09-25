@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Remora Agent Bridge",
+  "version": "0.1.0",
+  "description": "Observes the active page and executes exactly one validated browser action per request for the Remora agent orchestrator.",
+  "permissions": ["activeTab", "scripting", "storage", "tabs", "alarms"],
+  "host_permissions": ["http://127.0.0.1/*", "http://localhost/*"],
+  "optional_host_permissions": ["https://vercel.com/*", "https://*.vercel.com/*"],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "action": {
+    "default_title": "Remora Agent Bridge",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://127.0.0.1/*", "http://localhost/*"],
+      "js": ["content/content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://openrouter.ai/api/v1/chat/completions",
+    "body": {
+      "model": "fixture/model",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are the Remora planner. Return one JSON object matching the provided strict schema. Milestones describe outcomes, not DOM selectors."
+        },
+        {
+          "role": "user",
+          "content": "Create a DynamoDB table named remora-demo with partition key id."
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 2000,
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "PlannerOutput",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "questions",
+              "plan"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ready",
+                  "needs_input"
+                ]
+              },
+              "questions": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "plan": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "gen-planner-001",
+      "model": "fixture/model",
+      "object": "chat.completion",
+      "created": 1727000000,
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"status\":\"ready\",\"questions\":[],\"plan\":{\"goal\":\"Create DynamoDB table remora-demo with partition key id\",\"inputs\":{\"tableName\":\"remora-demo\",\"partitionKey\":\"id\"},\"milestones\":[{\"id\":\"m1\",\"goal\":\"Open the DynamoDB create-table form\",\"completion\":[\"The DynamoDB create table form is visible\"]},{\"id\":\"m2\",\"goal\":\"Enter the table name and partition key\",\"completion\":[\"Table name remora-demo is entered\",\"Partition key id is entered\"]},{\"id\":\"m3\",\"goal\":\"Create the table after approval\",\"completion\":[\"The create table action has been approved and submitted\",\"Table remora-demo appears as creating or active\"]}],\"finalCriteria\":[\"DynamoDB table remora-demo exists with partition key id\"],\"approvalRules\":[{\"id\":\"approve-create-table\",\"description\":\"Require explicit approval before clicking Create table\",\"risk\":\"mutate\",\"when\":{\"actionKinds\":[\"click\"],\"targetNamePattern\":\"^Create table$\",\"targetRole\":\"button\",\"pageUrlPattern\":\"create-table\"}}]}}"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 412,
+        "completion_tokens": 318,
+        "total_tokens": 730,
+        "cost": 0.00092
+      }
+    }
+  }
+}

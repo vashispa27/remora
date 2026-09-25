@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Remora Agent Bridge</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <h1 class="title">Remora Agent Bridge</h1>
+
+      <dl class="status">
+        <div class="row">
+          <dt>Status</dt>
+          <dd><span id="connection" class="badge">connecting</span></dd>
+        </div>
+        <div class="row">
+          <dt>Bridge</dt>
+          <dd id="bridge-url" class="mono">—</dd>
+        </div>
+        <div class="row">
+          <dt>Version</dt>
+          <dd id="version">—</dd>
+        </div>
+        <div class="row">
+          <dt>Current tab</dt>
+          <dd id="tab">—</dd>
+        </div>
+        <div class="row">
+          <dt>Site access</dt>
+          <dd>
+            <span id="host-access">—</span>
+            <button id="grant" type="button" class="grant" hidden>Grant access</button>
+          </dd>
+        </div>
+      </dl>
+
+      <button id="reconnect" type="button" class="reconnect">Reconnect</button>
+      <p id="error" class="error" hidden></p>
+      <p class="note">Displays connection status only. Page content is never shown here.</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

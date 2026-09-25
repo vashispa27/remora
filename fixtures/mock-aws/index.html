@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DynamoDB | AWS Console (Mock)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="mock-banner">Mock AWS fixture — local only, no cloud calls</div>
+    <header class="topbar">
+      <span class="service">DynamoDB</span>
+      <span class="region">us-east-1</span>
+    </header>
+    <main>
+      <h1>DynamoDB</h1>
+      <p class="lead">NoSQL key-value and document database.</p>
+      <button id="create" class="primary">Create table</button>
+      <section aria-labelledby="tables-heading">
+        <h2 id="tables-heading">Tables</h2>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Status</th>
+              <th scope="col">Partition key</th>
+            </tr>
+          </thead>
+          <tbody id="tables-body">
+            <tr>
+              <td colspan="3">No tables</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <script>
+      document.getElementById("create").addEventListener("click", () => {
+        window.location.href = "create-table.html";
+      });
+    </script>
+  </body>
+</html>

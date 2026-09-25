@@ -1,0 +1,126 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://openrouter.ai/api/alpha/decisions",
+    "body": {
+      "model": "typesafe/jev-1.13",
+      "state": {
+        "goal": "Create DynamoDB table remora-demo with partition key id",
+        "milestone": {
+          "id": "m2",
+          "goal": "Enter the table name and partition key"
+        },
+        "inputs": {
+          "tableName": "remora-demo",
+          "partitionKey": "id"
+        },
+        "observation": {
+          "snapshotId": "snap-1",
+          "url": "https://console.aws.amazon.com/dynamodbv2/home#create-table",
+          "title": "DynamoDB",
+          "elements": [
+            {
+              "ref": "e12",
+              "role": "button",
+              "name": "Create table",
+              "enabled": true,
+              "visible": true
+            },
+            {
+              "ref": "e34",
+              "role": "textbox",
+              "name": "Table name",
+              "enabled": true,
+              "visible": true
+            },
+            {
+              "ref": "e56",
+              "role": "textbox",
+              "name": "Partition key",
+              "enabled": true,
+              "visible": true
+            }
+          ]
+        },
+        "recentActions": []
+      },
+      "questions": {
+        "operation": {
+          "type": "choice",
+          "instructions": "Choose the next operation.",
+          "criteria": {
+            "click": "Click a visible element",
+            "type": "Type text into an editable element",
+            "select": "Select an option",
+            "scroll": "Scroll the page",
+            "wait": "Wait for the page to settle"
+          }
+        },
+        "target": {
+          "type": "choice",
+          "instructions": "Choose the target element ref.",
+          "criteria": {
+            "e12": "Create table button",
+            "e34": "Table name input",
+            "e56": "Partition key input"
+          }
+        },
+        "input_key": {
+          "type": "choice",
+          "instructions": "If typing, choose which input value to use.",
+          "criteria": {
+            "tableName": "The tableName input value",
+            "partitionKey": "The partitionKey input value",
+            "none": "No input value"
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "dec-001",
+      "model": "typesafe/jev-1.13",
+      "provider": "typesafe",
+      "answers": {
+        "operation": {
+          "type": "choice",
+          "choice": "click",
+          "confidence": 0.91,
+          "probabilities": {
+            "click": 0.91,
+            "type": 0.05,
+            "scroll": 0.03,
+            "wait": 0.01
+          }
+        },
+        "target": {
+          "type": "choice",
+          "choice": "e34",
+          "confidence": 0.88,
+          "probabilities": {
+            "e12": 0.07,
+            "e34": 0.88,
+            "e56": 0.05
+          }
+        },
+        "input_key": {
+          "type": "choice",
+          "choice": "none",
+          "confidence": 0.99,
+          "probabilities": {
+            "tableName": 0.005,
+            "partitionKey": 0.005,
+            "none": 0.99
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 640,
+        "output_tokens": 84,
+        "cost": 0.00121
+      }
+    }
+  }
+}

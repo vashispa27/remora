@@ -1,0 +1,92 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://openrouter.ai/api/v1/chat/completions",
+    "body": {
+      "model": "fixture/model",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are the Remora verifier. Compare milestone criteria with the observation. Every judgment must cite element refs or page facts. Return one JSON object matching the strict schema."
+        },
+        {
+          "role": "user",
+          "content": "VerificationSchema request: milestone m2 criteria plus the current page observation containing refs e12, e34, e56."
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 2000,
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "Verification",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "judgment",
+              "citations",
+              "feedback",
+              "summary"
+            ],
+            "properties": {
+              "judgment": {
+                "type": "string",
+                "enum": [
+                  "SATISFIED",
+                  "NOT_SATISFIED",
+                  "PENDING",
+                  "AMBIGUOUS"
+                ]
+              },
+              "citations": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "feedback": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "summary": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "gen-verifier-001",
+      "model": "fixture/model",
+      "object": "chat.completion",
+      "created": 1727000100,
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"judgment\":\"SATISFIED\",\"citations\":[{\"ref\":\"e12\",\"fact\":\"The 'Create table' heading is visible on the DynamoDB page\"},{\"ref\":\"e34\",\"fact\":\"The table name input contains remora-demo\"},{\"ref\":null,\"fact\":\"Active milestone criteria are listed in the verifier request\"}],\"feedback\":null,\"summary\":\"The active milestone completion criteria are satisfied by the observed page.\"}"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 288,
+        "completion_tokens": 96,
+        "total_tokens": 384,
+        "cost": 0.00054
+      }
+    }
+  }
+}

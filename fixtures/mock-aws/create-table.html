@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create table | DynamoDB (Mock)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="mock-banner">Mock AWS fixture — local only, no cloud calls</div>
+    <header class="topbar">
+      <span class="service">DynamoDB</span>
+      <span class="region">us-east-1</span>
+    </header>
+    <main>
+      <nav aria-label="Breadcrumb"><a href="index.html">Tables</a> / Create table</nav>
+      <h1>Create table</h1>
+      <p class="lead">Table details</p>
+      <form id="create-form">
+        <div class="field">
+          <label for="table-name">Table name</label>
+          <input id="table-name" name="tableName" type="text" autocomplete="off" spellcheck="false" />
+          <p class="hint">1–255 characters</p>
+        </div>
+        <div class="field">
+          <label for="partition-key">Partition key</label>
+          <input id="partition-key" name="partitionKey" type="text" autocomplete="off" spellcheck="false" />
+          <p class="hint">Primary key that uniquely identifies each item</p>
+        </div>
+        <div class="field">
+          <label for="partition-key-type">Partition key type</label>
+          <select id="partition-key-type" name="partitionKeyType">
+            <option value="string" selected>String</option>
+            <option value="number">Number</option>
+            <option value="binary">Binary</option>
+          </select>
+        </div>
+        <div class="actions">
+          <button type="button" id="cancel" onclick="window.location.href='index.html'">Cancel</button>
+          <button type="submit" id="submit">Create table</button>
+        </div>
+      </form>
+    </main>
+    <script>
+      document.getElementById("create-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = document.getElementById("table-name").value || "remora-demo";
+        window.location.href = "created.html?name=" + encodeURIComponent(name);
+      });
+    </script>
+  </body>
+</html>
